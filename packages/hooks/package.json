@@ -1,0 +1,13 @@
+{
+  "name": "@zero-ui/hooks",
+  "description": "composables",
+  "license": "MIT",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "types": "index.d.ts",
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  }
+}

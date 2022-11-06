@@ -1,0 +1,52 @@
+{
+  "name": "zero-ui",
+  "version": "1.0.0",
+  "description": "A Component Library for Vue 3",
+  "keywords": [
+    "zero-ui",
+    "component library",
+    "ui",
+    "utils",
+    "vue"
+  ],
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/leiax00/zero-ui/issues"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.ts",
+  "unpkg": "umd/index.js",
+  "jsdelivr": "umd/index.js",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.js",
+      "types": "./es/index.d.ts"
+    },
+    "./es": "./es/index.js",
+    "./lib": "./lib/index.js",
+    "./es/*.js": "./es/*.js",
+    "./es/*": "./es/*.js",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leiax00/zero-ui.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "style": "dist/style.css",
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "author": "leiax00",
+  "browserslist": [
+    "> 1%",
+    "not ie 11",
+    "not op_mini all"
+  ]
+}

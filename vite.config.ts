@@ -54,6 +54,9 @@ export default defineConfig({
           //配置打包根目录
           dir: resolve(outputDir, 'es'),
           preserveModulesRoot: resolve('packages', pkgName),
+          globals: {
+            vue: 'Vue',
+          },
         },
         {
           format: 'cjs',
@@ -64,6 +67,9 @@ export default defineConfig({
           //配置打包根目录
           dir: resolve(outputDir, 'lib'),
           preserveModulesRoot: resolve('packages', pkgName),
+          globals: {
+            vue: 'Vue',
+          },
         },
         {
           format: 'umd',
@@ -71,6 +77,9 @@ export default defineConfig({
           entryFileNames: '[name].js',
           //配置打包根目录
           dir: resolve(outputDir, 'umd'),
+          globals: {
+            vue: 'Vue',
+          },
         },
       ],
     },

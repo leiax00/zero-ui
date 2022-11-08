@@ -1,6 +1,6 @@
 {
   "name": "@leiax00/zero-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Component Library for Vue 3",
   "keywords": [
     "zero-ui",
@@ -22,7 +22,7 @@
     ".": {
       "require": "./lib/index.js",
       "import": "./es/index.js",
-      "types": "./es/index.d.ts"
+      "types": "./index.d.ts"
     },
     "./es": "./es/index.js",
     "./lib": "./lib/index.js",

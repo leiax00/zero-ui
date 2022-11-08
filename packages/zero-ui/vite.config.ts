@@ -7,14 +7,14 @@ import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
 const resolve = (...uri: string[]) => {
-  return path.resolve(__dirname, '../../', ...uri)
+  return path.resolve(__dirname, ...uri)
 }
 const join = (...uri: string[]) => {
   return path.join(...uri)
 }
 
 const pkgName = 'zero-ui'
-const outputDir = 'packages/zero-ui/dist'
+const outputDir = 'dist'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), DefineOptions(), dts(generateDtsOpts())],
@@ -34,7 +34,7 @@ export default defineConfig({
     //css分离
     //cssCodeSplit: true,
     lib: {
-      entry: resolve('packages', pkgName, 'index.ts'),
+      entry: resolve('index.ts'),
       name: pkgName,
       formats: ['es', 'cjs', 'umd'],
       // fileName: (format) => `index.${format}.js`,
@@ -42,7 +42,7 @@ export default defineConfig({
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue'],
-      input: resolve('packages', pkgName, 'index.ts'),
+      input: resolve('index.ts'),
       output: [
         {
           format: 'es',
@@ -56,7 +56,7 @@ export default defineConfig({
           },
           //配置打包根目录
           dir: resolve(outputDir, 'es'),
-          preserveModulesRoot: resolve('packages', pkgName),
+          preserveModulesRoot: resolve(),
         },
         {
           format: 'cjs',
@@ -69,7 +69,7 @@ export default defineConfig({
           },
           //配置打包根目录
           dir: resolve(outputDir, 'lib'),
-          preserveModulesRoot: resolve('packages', pkgName),
+          preserveModulesRoot: resolve(),
         },
         {
           format: 'umd',
@@ -111,12 +111,13 @@ function generateDtsOpts() {
     delDir(join(outDir, 'typings'))
   }
   return {
-    root: resolve(),
+    root: resolve('../../'),
     //指定使用的tsconfig.json为我们整个项目根目录下掉,如果不配置,你也可以在components下新建tsconfig.json
-    tsConfigFilePath: resolve('tsconfig.json'),
+    tsConfigFilePath: resolve('../../tsconfig.json'),
     outputDir: [outDir],
+    insertTypesEntry: true,
     // cleanVueFileName: true,
-    afterBuild: mergeDts,
+    // afterBuild: mergeDts,
   }
 }
 

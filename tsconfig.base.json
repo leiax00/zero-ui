@@ -16,7 +16,7 @@
     "rootDir": ".",
     "types": [],
     "paths": {
-      "@zero-ui/*": ["packages/*"]
+      "@leiax00/*": ["packages/*"]
     }
   }
 }

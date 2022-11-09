@@ -16,3 +16,4 @@ export const makeInstaller = (components: Plugin[] = []) => {
     install,
   }
 }
+export default {}

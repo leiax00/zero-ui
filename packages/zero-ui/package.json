@@ -1,6 +1,6 @@
 {
   "name": "@leiax00/zero-ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Component Library for Vue 3",
   "keywords": [
     "zero-ui",
@@ -15,19 +15,19 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "module": "es/index.ts",
+  "module": "es/index.mjs",
   "unpkg": "umd/index.js",
   "jsdelivr": "umd/index.js",
   "exports": {
     ".": {
       "require": "./lib/index.js",
       "import": "./es/index.js",
-      "types": "./index.d.ts"
+      "types": "./es/index.d.ts"
     },
-    "./es": "./es/index.js",
+    "./es": "./es/index.mjs",
     "./lib": "./lib/index.js",
-    "./es/*.js": "./es/*.js",
-    "./es/*": "./es/*.js",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
     "./lib/*.js": "./lib/*.js",
     "./lib/*": "./lib/*.js",
     "./*": "./*"

@@ -25,6 +25,11 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+    alias: {
+      '@leiax00': resolve('../'),
+    },
+  },
   build: {
     target: 'modules',
     //打包文件目录
@@ -46,40 +51,34 @@ export default defineConfig({
       output: [
         {
           format: 'es',
-          exports: 'named',
-          //不用打包成.es.js,这里我们想把它打包成.js
-          entryFileNames: '[name].js',
-          //让打包目录和我们目录对应
-          preserveModules: true,
-          globals: {
-            vue: 'Vue',
-          },
+          exports: 'auto',
+          globals: { vue: 'Vue' },
           //配置打包根目录
           dir: resolve(outputDir, 'es'),
+          //让打包目录和我们目录对应
+          preserveModules: true,
           preserveModulesRoot: resolve(),
+          //不用打包成.es.js,这里我们想把它打包成.js
+          entryFileNames: '[name].mjs',
         },
         {
           format: 'cjs',
           exports: 'named',
-          entryFileNames: '[name].js',
-          //让打包目录和我们目录对应
-          preserveModules: true,
-          globals: {
-            vue: 'Vue',
-          },
+          globals: { vue: 'Vue' },
           //配置打包根目录
           dir: resolve(outputDir, 'lib'),
+          //让打包目录和我们目录对应
+          preserveModules: true,
           preserveModulesRoot: resolve(),
+          entryFileNames: '[name].js',
         },
         {
           format: 'umd',
           exports: 'named',
-          entryFileNames: '[name].js',
-          globals: {
-            vue: 'Vue',
-          },
+          globals: { vue: 'Vue' },
           //配置打包根目录
           dir: resolve(outputDir, 'umd'),
+          entryFileNames: '[name].js',
         },
       ],
     },
@@ -88,7 +87,6 @@ export default defineConfig({
 
 function generateDtsOpts() {
   const outDir = resolve(outputDir)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function mergeDts() {
     travel(join(outDir, 'packages'), (filePath: string) => {
       const fileName = path.basename(filePath)
@@ -113,10 +111,9 @@ function generateDtsOpts() {
   }
   return {
     root: resolve('../../'),
-    //指定使用的tsconfig.json为我们整个项目根目录下掉,如果不配置,你也可以在components下新建tsconfig.json
     tsConfigFilePath: resolve('../../tsconfig.json'),
-    outputDir: [outDir],
-    insertTypesEntry: true,
+    outputDir: [join(outDir, 'es'), join(outDir, 'cjs')],
+    entryRoot: resolve(),
     // cleanVueFileName: true,
     // afterBuild: mergeDts,
   }

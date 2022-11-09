@@ -1,4 +1,4 @@
-import { INSTALLED_KEY } from '@zero-ui/constants'
+import { INSTALLED_KEY } from '@leiax00/constants'
 import { version } from './package.json'
 
 import type { App, Plugin } from '@vue/runtime-core'

@@ -1,4 +1,4 @@
-import { withInstall } from '@zero-ui/utils'
+import { withInstall } from '@leiax00/utils'
 
 import Icon from './src/icon.vue'
 

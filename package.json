@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.4.0",
-    "@zero-ui/components": "workspace:^0.0.5",
-    "@zero-ui/constants": "workspace:*",
-    "@zero-ui/hooks": "workspace:*",
-    "@zero-ui/utils": "workspace:*",
+    "@leiax00/components": "workspace:*",
+    "@leiax00/constants": "workspace:*",
+    "@leiax00/hooks": "workspace:*",
+    "@leiax00/utils": "workspace:*",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3"

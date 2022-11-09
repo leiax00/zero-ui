@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { add, SzIcon } from 'zero-ui'
-import utils from '@zero-ui/utils'
+import { add, SzIcon } from '@leiax00/zero-ui'
+import utils from '@leiax00/utils'
 defineOptions({
   name: 'App',
 })

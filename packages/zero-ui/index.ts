@@ -1,6 +1,6 @@
 import installer from './defaults'
-export * from '../utils'
-export * from '../components'
+export * from '@leiax00/utils'
+export * from '@leiax00/components'
 
 export const install = installer.install
 export const version = installer.version

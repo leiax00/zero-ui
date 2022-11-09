@@ -88,6 +88,7 @@ export default defineConfig({
 
 function generateDtsOpts() {
   const outDir = resolve(outputDir)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function mergeDts() {
     travel(join(outDir, 'packages'), (filePath: string) => {
       const fileName = path.basename(filePath)

@@ -1,6 +1,5 @@
 {
-  "name": "@zero-ui/components",
-  "version": "0.0.5",
+  "name": "@leiax00/components",
   "description": "all components are settled here",
   "main": "index.ts",
   "module": "index.ts",

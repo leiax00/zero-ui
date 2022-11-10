@@ -1,5 +1,5 @@
 import { INSTALLED_KEY } from '@leiax00/constants'
-import { version } from './package.json'
+import { name as selfName, version } from './package.json'
 
 import type { App, Plugin } from '@vue/runtime-core'
 
@@ -12,6 +12,7 @@ export const makeInstaller = (components: Plugin[] = []) => {
   }
 
   return {
+    selfName,
     version,
     install,
   }

@@ -1,0 +1,22 @@
+{
+  "name": "@leiax00/helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ideHelper": "ts-node --project tsconfig.json -r tsconfig-paths/register scripts/ideTipHelper.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@leiax00/zero-ui": "workspace:^1.0.6",
+    "fast-glob": "^3.2.12"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.7.4"
+  }
+}

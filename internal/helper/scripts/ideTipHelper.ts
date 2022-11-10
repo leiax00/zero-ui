@@ -1,5 +1,6 @@
-import { resolve } from 'path'
-import { selfName as name, version } from '@leiax00/zero-ui'
+import { join, resolve } from 'path'
+// 临时使用该方式引入版本
+import { name, version } from '../../../packages/zero-ui/package.json'
 import main from '@/index'
 
 const rootDir = resolve(__dirname, '../../../')
@@ -7,7 +8,7 @@ const rootDir = resolve(__dirname, '../../../')
 main({
   name,
   version,
-  outDir: 'dist',
+  outDir: join(rootDir, 'dist'),
   entry: 'docs/**/*.md',
   space: 2,
   fastGlobConfig: {
@@ -28,7 +29,6 @@ function reComponentName(title: string) {
 }
 
 function reWebTypesSource(title: string) {
-  console.log(title)
   const symbol = `Sz${title
     .replace(/-/, ' ')
     .replace(/^\w|\s+\w/g, (item) => item.trim().toUpperCase())}`

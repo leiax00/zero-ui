@@ -1,5 +1,4 @@
 import * as path from 'path'
-import * as fs from 'fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -12,12 +11,23 @@ const resolve = (...uri: string[]) => {
 const join = (...uri: string[]) => {
   return path.join(...uri)
 }
+const rootDir = resolve('../../')
 
 const pkgName = 'zero-ui'
-const outputDir = 'dist'
+const outputDir = join(rootDir, 'dist')
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), DefineOptions(), dts(generateDtsOpts())],
+  plugins: [
+    vue(),
+    DefineOptions(),
+    dts({
+      root: rootDir,
+      tsConfigFilePath: join(rootDir, 'tsconfig.json'),
+      outputDir: [join(outputDir, 'es')],
+      entryRoot: resolve(),
+      // afterBuild: mergeDts,
+    }),
+  ],
   css: {
     preprocessorOptions: {
       scss: {
@@ -33,7 +43,7 @@ export default defineConfig({
   build: {
     target: 'modules',
     //打包文件目录
-    outDir: resolve(outputDir),
+    outDir: outputDir,
     //压缩
     minify: false,
     //css分离
@@ -54,7 +64,7 @@ export default defineConfig({
           exports: 'auto',
           globals: { vue: 'Vue' },
           //配置打包根目录
-          dir: resolve(outputDir, 'es'),
+          dir: join(outputDir, 'es'),
           //让打包目录和我们目录对应
           preserveModules: true,
           preserveModulesRoot: resolve(),
@@ -66,7 +76,7 @@ export default defineConfig({
           exports: 'named',
           globals: { vue: 'Vue' },
           //配置打包根目录
-          dir: resolve(outputDir, 'lib'),
+          dir: join(outputDir, 'lib'),
           //让打包目录和我们目录对应
           preserveModules: true,
           preserveModulesRoot: resolve(),
@@ -77,73 +87,10 @@ export default defineConfig({
           exports: 'named',
           globals: { vue: 'Vue' },
           //配置打包根目录
-          dir: resolve(outputDir, 'umd'),
+          dir: join(outputDir, 'umd'),
           entryFileNames: '[name].js',
         },
       ],
     },
   },
 })
-
-function generateDtsOpts() {
-  const outDir = resolve(outputDir)
-  function mergeDts() {
-    travel(join(outDir, 'packages'), (filePath: string) => {
-      const fileName = path.basename(filePath)
-      // module root拷贝根目录, 其他都是原目录拷贝
-      if (filePath.startsWith(join(outDir, 'packages', pkgName))) {
-        fs.copyFileSync(filePath, join(outDir, 'es', fileName))
-        fs.copyFileSync(filePath, join(outDir, 'lib', fileName))
-      } else {
-        fs.copyFileSync(
-          filePath,
-          filePath.replace(join(outDir, 'packages'), join(outDir, 'es'))
-        )
-        fs.copyFileSync(
-          filePath,
-          filePath.replace(join(outDir, 'packages'), join(outDir, 'lib'))
-        )
-      }
-    })
-    //  清理拷贝后的文件
-    delDir(join(outDir, 'packages'))
-    delDir(join(outDir, 'typings'))
-  }
-  return {
-    root: resolve('../../'),
-    tsConfigFilePath: resolve('../../tsconfig.json'),
-    outputDir: [join(outDir, 'es'), join(outDir, 'cjs')],
-    entryRoot: resolve(),
-    // cleanVueFileName: true,
-    // afterBuild: mergeDts,
-  }
-}
-
-function travel(dir: string, callback: any) {
-  fs.readdirSync(dir).forEach((file) => {
-    const pathname = path.join(dir, file)
-    if (fs.statSync(pathname).isDirectory()) {
-      travel(pathname, callback)
-    } else {
-      callback(pathname)
-    }
-  })
-}
-
-function delDir(path: string) {
-  let files = []
-  if (fs.existsSync(path)) {
-    files = fs.readdirSync(path)
-    files.forEach((file, index) => {
-      const curPath = `${path}/${file}`
-      //判断是否是文件夹
-      if (fs.statSync(curPath).isDirectory()) {
-        delDir(curPath) //递归删除文件夹
-      } else {
-        //是文件的话说明是最后一层不需要递归
-        fs.existsSync(curPath) && fs.unlinkSync(curPath) //删除文件
-      }
-    })
-    fs.rmdirSync(path)
-  }
-}

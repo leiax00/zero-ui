@@ -1,4 +1,5 @@
 import * as path from 'path'
+import * as fs from 'fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -25,7 +26,7 @@ export default defineConfig({
       tsConfigFilePath: join(rootDir, 'tsconfig.json'),
       outputDir: [join(outputDir, 'es')],
       entryRoot: resolve(),
-      // afterBuild: mergeDts,
+      afterBuild: mergeDts,
     }),
   ],
   css: {
@@ -94,3 +95,8 @@ export default defineConfig({
     },
   },
 })
+
+function mergeDts() {
+  // 暂时在dts后copy一份package.json到构建目录
+  fs.copyFileSync(resolve('package.json'), join(outputDir, 'package.json'))
+}

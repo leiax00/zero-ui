@@ -7,8 +7,10 @@
   ],
   "scripts": {
     "dev": "vite",
+    "up_version": "pnpm -C packages/zero-ui exec pnpm version patch",
     "build": "vite build -c ./packages/zero-ui/vite.config.ts",
     "build:helper": "npm run -C internal/helper ideHelper ",
+    "publish": "pnpm publish",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
     "lint:fix": "pnpm run lint --fix"
@@ -58,6 +60,10 @@
         "react-dom"
       ]
     }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "directory": "dist"
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"

@@ -118,5 +118,8 @@
     // Tell ts-node CLI to install the --loader automatically, explained below
     "esm": true
   },
-  "include": ["../../../packages/zero-ui/package.json"]
+  "include": [
+    "../../../packages/zero-ui/package.json",
+    "./**/*.ts"
+  ]
 }

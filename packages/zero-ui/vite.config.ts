@@ -15,7 +15,7 @@ const join = (...uri: string[]) => {
 const rootDir = resolve('../../')
 
 const pkgName = 'zero-ui'
-const outputDir = join(rootDir, 'dist')
+const outputDir = resolve('dist')
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [

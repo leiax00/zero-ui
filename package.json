@@ -1,10 +1,6 @@
 {
   "private": true,
   "packageManager": "pnpm@7.14.2",
-  "workspaces": [
-    "packages/*",
-    "docs"
-  ],
   "scripts": {
     "dev": "vite",
     "up_version": "pnpm -C packages/zero-ui exec pnpm version patch",
@@ -60,10 +56,6 @@
         "react-dom"
       ]
     }
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "directory": "dist"
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"

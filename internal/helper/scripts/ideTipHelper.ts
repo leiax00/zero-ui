@@ -8,7 +8,7 @@ const rootDir = resolve(__dirname, '../../../')
 main({
   name,
   version,
-  outDir: join(rootDir, 'dist'),
+  outDir: join(rootDir, 'packages/zero-ui/dist'),
   entry: 'docs/**/*.md',
   space: 2,
   fastGlobConfig: {

@@ -6,6 +6,7 @@
     "up_version": "pnpm -C packages/zero-ui exec pnpm version patch",
     "build": "vite build -c ./packages/zero-ui/vite.config.ts",
     "build:helper": "npm run -C internal/helper ideHelper ",
+    "build:all": "pnpm -w up_version && pnpm -w build && pnpm -w build:helper",
     "publish": "pnpm -F @leiax00/zero-ui exec pnpm publish",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",

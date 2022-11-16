@@ -1,6 +1,6 @@
 import { join, resolve } from 'path'
 // 临时使用该方式引入版本
-import { name, version } from '../../../packages/zero-ui/package.json'
+import { selfName as name, version } from '@leiax00/zero-ui'
 import main from '@/index'
 
 const rootDir = resolve(__dirname, '../../../')

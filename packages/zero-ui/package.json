@@ -14,7 +14,23 @@
     "url": "https://github.com/leiax00/zero-ui/issues"
   },
   "license": "MIT",
-  "main": "index.ts",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "unpkg": "umd/index.js",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs",
+      "types": "./es/index.d.ts"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
+  },
   "jsdelivr": "umd/index.js",
   "repository": {
     "type": "git",
@@ -22,23 +38,6 @@
   },
   "publishConfig": {
     "access": "public",
-    "main": "lib/index.js",
-    "module": "es/index.mjs",
-    "unpkg": "umd/index.js",
-    "exports": {
-      ".": {
-        "require": "./lib/index.js",
-        "import": "./es/index.mjs",
-        "types": "./es/index.d.ts"
-      },
-      "./es": "./es/index.mjs",
-      "./lib": "./lib/index.js",
-      "./es/*.mjs": "./es/*.mjs",
-      "./es/*": "./es/*.mjs",
-      "./lib/*.js": "./lib/*.js",
-      "./lib/*": "./lib/*.js",
-      "./*": "./*"
-    },
     "directory": "dist",
     "linkDirectory": true
   },

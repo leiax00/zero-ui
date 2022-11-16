@@ -30,7 +30,7 @@
     "@types/lodash-es": "*",
     "@types/node": "^18.11.9",
     "@vitejs/plugin-vue": "^3.2.0",
-    "@zero-ui/eslint-config": "workspace:*",
+    "@leiax00/eslint-config": "workspace:*",
     "eslint": "^8.18.0",
     "eslint-define-config": "^1.5.1",
     "jsdom": "^20.0.2",

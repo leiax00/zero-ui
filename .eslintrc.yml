@@ -3,6 +3,6 @@ env:
   es2021: true
 root: true
 extends:
-  - '@zero-ui/eslint-config'
+  - '@leiax00/eslint-config'
 
 rules: {}

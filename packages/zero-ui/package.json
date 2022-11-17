@@ -43,7 +43,8 @@
   },
   "style": "dist/style.css",
   "peerDependencies": {
-    "vue": "^3.2.0"
+    "vue": "^3.2.0",
+    "element-plus": "^2.2.0"
   },
   "author": "leiax00",
   "vetur": {

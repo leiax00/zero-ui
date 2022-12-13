@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "es2018",
+    "module": "esnext",
     "baseUrl": ".",
     "sourceMap": false,
     "moduleResolution": "node",
-    "allowJs": true,
+    "allowJs": false,
     "strict": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,

@@ -23,7 +23,7 @@ export default defineConfig({
     DefineOptions(),
     dts({
       root: rootDir,
-      tsConfigFilePath: join(rootDir, 'tsconfig.json'),
+      tsConfigFilePath: join(rootDir, 'tsconfig.web.json'),
       outputDir: [join(outputDir, 'es')],
       entryRoot: resolve(),
       afterBuild: mergeDts,
@@ -52,7 +52,7 @@ export default defineConfig({
     lib: {
       entry: resolve('index.ts'),
       name: pkgName,
-      formats: ['es', 'cjs', 'umd'],
+      // formats: ['es', 'cjs', 'umd'],
       // fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {

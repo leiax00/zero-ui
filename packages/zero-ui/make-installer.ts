@@ -1,5 +1,5 @@
 import { INSTALLED_KEY } from '@leiax00/constants'
-import { name as selfName, version } from './package.json'
+import { name as selfName, version } from './version'
 
 import type { App, Plugin } from '@vue/runtime-core'
 
